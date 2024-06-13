@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+from basehelpers import *
 # Initializes pyGame
 pygame.init()
 
@@ -9,13 +10,16 @@ WHITE = (255, 255, 255)
 # Pygame considers top left as coord (0,0)
 GameWindow = pygame.display.set_mode(size=(W_WIDTH,W_HEIGHT))
 
-# Load image
-TileImage = pygame.image.load('./Assets/GridTile.png').convert_alpha()
-TileImage_rect = TileImage.get_rect()
+Resource = LoadImage('./Assets/GridTile.png')
+TileImage = Resource['Image']
+TileRect = Resource['Rect']
 
+Music = LoadSound('./Assets/musica.mp3')
 # Draw to window
 
 GameClock = pygame.time.Clock()
+pygame.mixer_music.play(-1)
+pygame.mixer_music.set_volume(0.7)
 
 while True:
     GameClock.tick(60)
@@ -26,13 +30,13 @@ while True:
             #sys.exit();
     pressed_key = pygame.key.get_pressed()
     if pressed_key[pygame.K_w]:
-        TileImage_rect.centery -= 1
+        TileRect.centery -= 1
     if pressed_key[pygame.K_s]:
-        TileImage_rect.centery += 1
+        TileRect.centery += 1
     if pressed_key[pygame.K_d]:
-        TileImage_rect.centerx += 1
+        TileRect.centerx += 1
     if pressed_key[pygame.K_a]:
-        TileImage_rect.centerx -= 1
+        TileRect.centerx -= 1
     GameWindow.fill(WHITE)
-    GameWindow.blit(source=TileImage, dest=TileImage_rect)
+    GameWindow.blit(source=TileImage, dest=TileRect)
     pygame.display.update()
