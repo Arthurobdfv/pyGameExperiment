@@ -11,6 +11,7 @@ class GraphicsEngine:
         # Specifies use og OpenGL 3,3
         pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 3)
         pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 3)
+        pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
         # create opengl context
         pg.display.set_mode(self.WIN_SIZE, flags=pg.OPENGL | pg.DOUBLEBUF)
         # detect and use existing opengl context
@@ -31,6 +32,7 @@ class GraphicsEngine:
 
     def render(self):
         self.ctx.clear(color=self.background_color)
+        self.scene.render()
         pg.display.flip()            
 
     def run(self):
