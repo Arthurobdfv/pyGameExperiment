@@ -11,3 +11,13 @@ MENU_OPTION = (
     'New Game 2P - VS.',
     'Exit'
 )
+
+
+# E
+ENTITY_SPEED = { 
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 3,
+    }
